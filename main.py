@@ -1,15 +1,17 @@
 import tkinter as tk
 
-expression = ""
+# Crear la ventana
 window = tk.Tk()
 window.title("Calculadora")
 window.geometry("264x372")
 
+# Equacion a evaluar
 equation = tk.StringVar()
+expression = ""
 expression_field = tk.Entry(window, textvariable=equation)
 expression_field.grid(columnspan=4)
 
-
+# Cuando se presiona cualquier boton de número u operador
 def press(num):
     global expression
     expression = expression + str(num)
@@ -17,6 +19,7 @@ def press(num):
     equation.set(expression)
 
 
+# Cuando se presiona el boton de =
 def equalpress():
 
     try:
@@ -31,12 +34,13 @@ def equalpress():
         expression = ""
 
 
+# Cuando se presiona el boton de limpiar
 def clearfield():
     global expression
     expression = ""
     equation.set("")
 
-
+# Crear los botonoes y asociarlos a su controlador de eventos
 def crear_botones():
     button1 = tk.Button(window, text=' 1 ', fg='black',
                         command=lambda: press(1), height=4, width=8)
@@ -107,7 +111,7 @@ def crear_botones():
     equal.grid(row=6, column=0, columnspan=4)
 
 
+# Creat los botones
 crear_botones()
-
 # ciclo de eventos
 window.mainloop()
